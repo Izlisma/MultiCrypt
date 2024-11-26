@@ -37,11 +37,9 @@ struct fs_data {
 
     // user write buffer to specify path to filesystem image
     const char *ufs_path;
-    usize_t ufs_path_size;
 
     // user write buffer to specify path to mounted filesystem
     const char *ufsmnt_path;
-    usize_t ufsmnt_path_size;
 
 };
 
