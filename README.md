@@ -1,4 +1,3 @@
 # MultiCrypt
-VFS with CLI -> LKM -> and custom protocols etc..
 
-![image](https://github.com/user-attachments/assets/c51bd42e-2ffe-4993-b8fd-2fdf4f0f698c)
+MultiCrypt is an open source software allowing you to create and manage multiple encrypted filesystems, it comes with a kernel driver which carries out most of the work, with a simple CLI tool to interface with the kernel driver. The kernel driver also protects the CLI tool ensuring optimal security to ensure safety against possible attacks.
