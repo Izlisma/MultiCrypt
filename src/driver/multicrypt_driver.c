@@ -1,7 +1,5 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
-#include <linux/fs.h>
-#include <linux/uaccess.h>
 
 #include "ioctl_driver/include/chardev.h"
 
@@ -11,7 +9,6 @@ MODULE_DESCRIPTION("MultiCrypt - an open source encrypted filesystem management 
 MODULE_VERSION("1.0");
 
 static int major_number = -1;
-#define DEVICE_NAME "multicrypt"
 
 static int __init multicrypt_init(void)
 {
@@ -32,10 +29,8 @@ static void __exit multicrypt_exit(void)
 {
     if (major_number >= 0) {
         unregister_chrdev(major_number, DEVICE_NAME);
-        printk(KERN_INFO "multicrypt: Driver successfully unloaded\n");
-    } else {
-        printk(KERN_ERR "multicrypt: Unregistering character device driver failed, invalid major number: %d\n", major_number);
-    }
+
+    printk(KERN_INFO "multicrypt: Driver successfully unloaded\n");
 }
 
 module_init(multicrypt_init);
