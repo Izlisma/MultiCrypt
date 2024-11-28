@@ -8,6 +8,7 @@
  */
 
 #define DEVICE_NAME "multicrypt"
+#define MULTICRYPT_CLI_PROCESS_NAME "multicrypt_cli"
 
 #define ALGO_TYPE_HYBRID_SYM_ASYM 1
 #define ALGO_TYPE_PASSWORD_DERIVED_KEY 2
