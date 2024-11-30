@@ -4,32 +4,22 @@
 /* 
  * Data shared between the kernel driver and CLI,
  * this includes supported algorithms, structures,
- * codes etc
+ * macros etc
  */
 
 #define DEVICE_NAME "multicrypt"
 #define MULTICRYPT_CLI_PROCESS_NAME "multicrypt_cli"
 
-#define ALGO_TYPE_HYBRID_SYM_ASYM 1
-#define ALGO_TYPE_PASSWORD_DERIVED_KEY 2
-
-#define SUCCESS 0
-#define EINVAL_ALGORITHM -1
-#define EINVAL_KEY -2
-#define EINVAL_FSPATH -3
+#define MULTICRYPT_IOCTL_SUCCESS_BIT 1
+#define MULTICRYPT_IOCTL_FAIL_BIT 2
+#define MULTICRYPT_IOCTL_INVALID_CREDS_BIT 3
 
 typedef unsigned long usize_t;  
 
 struct algorithm_data {
 
-    // code to specify algorithm type
-    int algorithm_type;
-
-    // specify algorithms for PDK type
-    const char *updk_algorithm;
-
-    // specify algorithms for hybrid asymmetric-symmetric
-    const char *uasymmetric_algorithm;
+    // specify algorithms 
+    const char *uhashing_algorithm;
     const char *usymmetric_algorithm;
 
 };
@@ -44,47 +34,37 @@ struct fs_data {
 
 };
 
-struct rw_data {
+struct credentials_data {
 
-    // user read buffer
-    char *uread_buf;
-    usize_t uread_buf_size;
+    // user write buffer to supply password
+    char *upassword;
 
-    // user write buffer
-    const char *uwrite_buf;
-    usize_t uwrite_buf_size;
+    // user write buffer to supply pin code
+    char *upin;
 
 };
 
-/* 
+/**
  * Structure of user supplied data to send to 
  * driver via ioctl
- *
- * For sending data to kernel space, if there
- * is not a field explicitly defined for that data
- * then send it via rw.uwrite_buf 
- *
- * Data received from kernel space will be stored in
- * rw.uread_buf
+ * 
+ * errmask is filled by the driver
  */
 struct muticrypt_ioctl_struct {
 
-    struct fs_data fs;
-    struct algorithm_data algorithm;
-    struct rw_data rw;
-    int errcode;
+    struct fs_data *fs;
+    struct algorithm_data *algorithm;
+    struct credentials_data *credentials;
+    char *uread_buf;
+    unsigned int errmask;
 
 };
 
-static const char *supported_pdk_algorithm[] = {
+static const char *supported_hashing_algorithms[] = {
 
 };
 
-static const char *supported_asymmetric_algorithm[] = {
-
-};
-
-static const char *supported_symmetric_algorithm[] = {
+static const char *supported_symmetric_algorithms[] = {
 
 };
 
