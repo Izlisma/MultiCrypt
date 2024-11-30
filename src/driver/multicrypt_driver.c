@@ -6,7 +6,7 @@
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Humzak711 && SynclonSec");
-MODULE_DESCRIPTION("MultiCrypt - an open source encrypted filesystem management software");
+MODULE_DESCRIPTION("MultiCrypt - an open source encrypted virtual filesystem management software");
 MODULE_VERSION("1.0");
 
 static int major_number = -1;
@@ -14,7 +14,7 @@ static int major_number = -1;
 static int __init multicrypt_init(void)
 {
     int ret = 0;
-    multicrypt_info("Driver successfully loaded\n");
+    multicrypt_info("successfully loaded the driver\n");
 
     major_number = register_chrdev(0, DEVICE_NAME, &multicrypt_fops);
     if (major_number < 0) {
