@@ -2,14 +2,16 @@
 
 int pbkdf2_raw(const char *hash_algo, size_t hash_algo_size, const char *password, 
 size_t password_size, char *output_key, size_t output_key_size, 
-const char *salt, unsigned int iterations)
+const char *salt, size_t salt_size, const char *pepper, 
+size_t pepper_size, unsigned int iterations)
 {
-
-
-}   
+    
+}
 
 int multicrypt_pbkdf2(const char *hash_algo const char *password, size_t password_size, 
-char *output_key, size_t output_key_size, const char *salt, unsigned int iterations)
+char *output_key, size_t output_key_size, const char *salt, 
+size_t salt_size, const char *pepper, size_t pepper_size, 
+unsigned int iterations)
 {
 
 }
