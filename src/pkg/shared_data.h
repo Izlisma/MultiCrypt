@@ -20,7 +20,8 @@ struct algorithm_data {
 
     // specify algorithms 
     const char *uhashing_algorithm;
-    const char *usymmetric_algorithm;
+    const char *usymmetric1_algorithm;
+    const char *usymmetric2_algorithm;
 
 };
 
